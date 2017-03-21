@@ -1,0 +1,19 @@
+<workflow-app xmlns="uri:oozie:workflow:0.1" name="deploy-git-wf">
+  <start to="git-deploy"/>
+  <action name='git-deploy'>
+    <git xmlns="uri:oozie:git-action:0.1">
+      <job-tracker>${jobTracker}</job-tracker>
+      <name-node>hdfs://f-bcpc-vm1.bcpc.example.com:8020</name-node>
+      <git-uri>git@bbgithub.dev.bloomberg.com:BACH/chef-bach.git</git-uri>
+      <key-path>keys</key-path>
+      <destination-uri>chef-bach</destination-uri>
+    </git>
+    <ok to="end"/>
+    <error to="fail"/>
+  </action>
+  <kill name="fail">
+    <message>Git Action Failed! [${wf:errorMessage(wf:lastErrorNode())}]</message>
+  </kill>
+  <end name="end"/>
+</workflow-app>
+
