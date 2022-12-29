@@ -1,3 +1,6 @@
+# Committed into Apache Oozie
+This work was accepted in [OOZIE-2877](https://issues.apache.org/jira/browse/OOZIE-2877). Nothing new is here; this code was used to build the feature stand-alone.
+
 # Git Oozie Custom Actions
 This repository contains custom oozie actions for deployment of source code from a git repository to HDFS
 
